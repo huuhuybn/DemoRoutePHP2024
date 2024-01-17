@@ -1,0 +1,15 @@
+{
+    "name": "huuhuy/demo",
+    "autoload": {
+        "psr-4": {
+            "Huuhuy\\Demo\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "HuyNguyen",
+            "email": "huuhuybn@gmail.com"
+        }
+    ],
+    "require": {}
+}
