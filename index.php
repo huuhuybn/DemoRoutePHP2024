@@ -13,14 +13,16 @@ use Huuhuy\Demo\controllers\StudentController;
 //echo 'HOME';
 
 $router = new Router();
+$router->addRoute('/Demo/index.php',function (){
+    echo 'Welcome HomePAGE' . '<br>';
+});
 
-
-$router->addRoute('/Demo/index.php/home',function (){
+$router->addRoute('/Demo/index.php?url=home',function (){
     echo 'Welcome Home' . '<br>';
 });
 
 
-$router->addRoute('/Demo/index.php/news', function (){
+$router->addRoute('/Demo/index.php?url=news', function (){
     echo 'Welcome News Page' . '<br>';
 });
 
@@ -40,8 +42,8 @@ $router->addRoute('/Demo/index.php/student',[new StudentController(),'index']);
 $url = $_SERVER['REQUEST_URI'];
 //var_dump($_SERVER);
 // .htacess
-echo $url;
-//$router->getRoute($url);
+echo $url . '<br>';
+$router->getRoute($url);
 
 
 
