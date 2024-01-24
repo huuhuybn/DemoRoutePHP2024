@@ -4,6 +4,15 @@
 </head>
 
 <body>
+<?php
+
+session_start();
+if (isset($_SESSION['username'])){
+    echo "Xin chao " . $_SESSION['username']. '</br>';
+    echo '<a href="/DemoRoute2024/index.php?logout">Logout</a><br>';
+}
+else echo "Xin Chao Guest !!!" . '<br>';
+    ?>
 <a href="/DemoRoute2024/index.php">Home</a>
 <a href="/DemoRoute2024/index.php?news">News</a>
 <a href="/DemoRoute2024/index.php?showFormLogin">Login Form</a>
@@ -20,7 +29,8 @@ $router->get('/DemoRoute2024/index.php?showFormLogin',
     [new StudentController(),'showFormLogin']);
 $router->get('/DemoRoute2024/index.php?showFormRegister',
     [new StudentController(),'showFormRegister']);
-
+$router->get('/DemoRoute2024/index.php?logout',
+    [new StudentController(),'logout']);
 $router->post('/DemoRoute2024/index.php?login',
     [new StudentController(),'login']);
 

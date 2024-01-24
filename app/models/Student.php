@@ -11,12 +11,12 @@ class Student extends Person
     private $idBangDiem;
     private $khoa;
 
-    public function register($username,$password)
+    public function register($username, $password)
     {
         $db = Database::getDB();
         try {
             // Chuẩn bị truy vấn SQL
-            $query = "INSERT INTO students (username, password) VALUES (:username,
+            $query = "INSERT INTO users (username, password) VALUES (:username,
                                                   :password)";
             // Sử dụng PDOStatement để thực hiện truy vấn
             $stmt = $db->prepare($query);
@@ -26,11 +26,32 @@ class Student extends Person
             // Thực hiện truy vấn
             $stmt->execute();
             return 1;
-        }catch (\PDOException $error){
+        } catch (\PDOException $error) {
             echo $error->getMessage();
             return null;
         }
 
+    }
+
+    public function login($username, $password)
+    {
+        $db = Database::getDB();
+        try {
+            // Chuẩn bị truy vấn SQL
+            $query = "SELECT * FROM users WHERE username=:username AND password=:password";
+            // Sử dụng PDOStatement để thực hiện truy vấn
+            $stmt = $db->prepare($query);
+            // Gán giá trị cho các tham số
+            $stmt->bindParam(':username', $username, \PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, \PDO::PARAM_STR);
+            // Thực hiện truy vấn
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) return 1;
+
+        } catch (\PDOException $error) {
+            echo $error->getMessage();
+            return null;
+        }
     }
 
 

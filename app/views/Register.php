@@ -1,6 +1,3 @@
-
-
-
 <?php
 
 ?>
@@ -11,3 +8,5 @@
     <input type="file" name="avatar">
     <button type="submit">Register</button>
 </form>
+
+
