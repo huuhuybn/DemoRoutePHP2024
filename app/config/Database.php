@@ -7,10 +7,10 @@ class Database
     static $db;
     public static function getDB()
     {
-        $servername ='sql.freedb.tech';
-        $username = 'freedb_underroot';
-        $password = '26Ke2xWThh4R$WJ';
-        $database_name = 'freedb_fpolyhn';
+        $servername = $_ENV['SERVER'];
+        $username = $_ENV['USERNAME'];
+        $password = $_ENV['PASSWORD'];
+        $database_name = $_ENV['DATABASENAME'];
         if (!isset(self::$db)){
             // khoi tao ket noi DB !!!
             self::$db = new \PDO("mysql:host={$servername};
