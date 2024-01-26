@@ -8,7 +8,7 @@ class Database
     public static function getDB()
     {
         $servername = $_ENV['SERVER'];
-        $username = $_ENV['USERNAME'];
+        $username = $_ENV['TENTK'];
         $password = $_ENV['PASSWORD'];
         $database_name = $_ENV['DATABASENAME'];
         if (!isset(self::$db)){
